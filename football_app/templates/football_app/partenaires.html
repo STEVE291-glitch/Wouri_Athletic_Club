@@ -1,0 +1,54 @@
+{% extends 'football_app/base.html' %}
+{% load static %}
+
+{% block title %}Partenaires | Wouri Athletic Club{% endblock %}
+
+{% block content %}
+
+<!-- HERO PARTENAIRES -->
+<section
+  class="relative hero-section bg-cover bg-center"
+  style="background-image: url('{% static "football_app/images/partenaires-hero.jpg" %}')"
+>
+  <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+    <div class="text-center text-white" data-aos="fade-up">
+      <h1 class="text-5xl font-bold mb-4">Nos Partenaires</h1>
+      <p class="text-xl">
+        Ils nous accompagnent dans notre vision et notre réussite
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENU PARTENAIRES -->
+<section class="max-w-7xl mx-auto py-16 px-4">
+  {% if partenaires %}
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
+    {% for partenaire in partenaires %}
+    <div
+      class="bg-white shadow rounded-lg p-6 text-center hover:shadow-lg transition"
+      data-aos="zoom-in"
+    >
+      {% if partenaire.logo %}
+      <img
+        src="{{ partenaire.logo.url }}"
+        alt="{{ partenaire.nom }}"
+        class="mx-auto h-24 object-contain mb-4"
+      />
+      {% endif %}
+
+      <h3 class="font-bold text-lg text-blue-900">
+        {{ partenaire.nom }}
+      </h3>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <p class="text-center text-gray-600">
+    Aucun partenaire enregistré pour le moment.
+  </p>
+  {% endif %}
+</section>
+
+{% endblock %}

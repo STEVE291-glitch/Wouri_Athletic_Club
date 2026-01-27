@@ -1,0 +1,115 @@
+{% extends 'football_app/base.html' %} {% load static %} {% block title %}Le
+Club | Wouri Athletic Club{% endblock %} {% block content %}
+
+<!-- ===================== -->
+<!-- HERO CLUB -->
+<!-- ===================== -->
+<section
+  class="relative hero-section bg-cover bg-center"
+  style="
+    background-image: url('{% static 'football_app/images/club-hero.jpg' %}');
+  "
+>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <!-- Contenu -->
+  <div class="relative h-full flex items-center justify-center">
+    <div class="text-center text-white" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Le Club</h1>
+      <p class="text-xl md:text-2xl tracking-wide">
+        Passion · Tradition · Excellence
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- HISTOIRE DU CLUB -->
+<!-- ===================== -->
+<section class="max-w-7xl mx-auto py-20 px-4">
+  <h2
+    class="text-3xl md:text-4xl font-bold text-blue-900 mb-12 text-center"
+    data-aos="fade-up"
+  >
+    Notre Histoire
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- Image -->
+    <img
+      src="{% static 'football_app/images/club-history.jpg' %}"
+      alt="Histoire du Wouri Athletic Club"
+      class="rounded-2xl shadow-xl"
+      data-aos="fade-right"
+    />
+
+    <!-- Texte -->
+    <div data-aos="fade-left">
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Fondé en 1990, le <strong>Wouri Athletic Club</strong> s’est imposé
+        comme une référence du football local, porté par la passion de ses
+        joueurs et le soutien indéfectible de ses supporters.
+      </p>
+
+      <p class="text-gray-700 text-lg leading-relaxed">
+        De ses débuts modestes aux ambitions nationales, le club défend des
+        valeurs fortes : discipline, respect, solidarité et excellence sportive.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- VALEURS DU CLUB -->
+<!-- ===================== -->
+<section class="bg-gray-100 py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2
+      class="text-3xl md:text-4xl font-bold text-blue-900 mb-12 text-center"
+      data-aos="fade-up"
+    >
+      Nos Valeurs
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Valeur 1 -->
+      <div
+        class="bg-white rounded-2xl shadow-lg p-8 text-center"
+        data-aos="zoom-in"
+      >
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Passion</h3>
+        <p class="text-gray-600">
+          Une passion profonde pour le football, transmise de génération en
+          génération.
+        </p>
+      </div>
+
+      <!-- Valeur 2 -->
+      <div
+        class="bg-white rounded-2xl shadow-lg p-8 text-center"
+        data-aos="zoom-in"
+        data-aos-delay="100"
+      >
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Discipline</h3>
+        <p class="text-gray-600">
+          Rigueur, travail et respect sont au cœur de notre identité.
+        </p>
+      </div>
+
+      <!-- Valeur 3 -->
+      <div
+        class="bg-white rounded-2xl shadow-lg p-8 text-center"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Excellence</h3>
+        <p class="text-gray-600">
+          Toujours viser plus haut, sur le terrain comme en dehors.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

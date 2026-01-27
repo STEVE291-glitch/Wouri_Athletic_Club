@@ -1,0 +1,97 @@
+{% extends 'football_app/base.html' %}
+{% load static %}
+
+{% block title %}Abonnements | Wouri Athletic Club{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section
+  class="relative hero-section bg-cover bg-center"
+  style="background-image: url('{% static "football_app/images/abonnement-hero.jpg" %}')"
+>
+  <div class="absolute inset-0 bg-blue-900/70 flex items-center justify-center">
+    <div class="text-center text-white" data-aos="fade-up">
+      <h1 class="text-5xl font-bold mb-4">Abonnements</h1>
+      <p class="text-xl">
+        Soutenez votre club. Vivez chaque match de l’intérieur.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENU -->
+<section class="max-w-7xl mx-auto py-16 px-4">
+
+  {% if cartes %}
+  <div class="grid md:grid-cols-3 gap-8">
+    {% for carte in cartes %}
+    <div class="bg-white rounded-lg shadow p-6 text-center">
+      <h2 class="text-2xl font-bold mb-4 text-blue-900">
+        {{ carte.nom }}
+      </h2>
+
+      <p class="mb-4 text-gray-700">
+        {{ carte.description }}
+      </p>
+
+      <p class="text-3xl font-bold text-blue-900 mb-6">
+        {{ carte.prix }} FCFA
+      </p>
+
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="carte_id" value="{{ carte.id }}" />
+
+        <input
+          type="text"
+          name="prenom"
+          placeholder="Prénom"
+          required
+          class="w-full border rounded px-3 py-2 mb-2"
+        />
+
+        <input
+          type="text"
+          name="nom"
+          placeholder="Nom"
+          required
+          class="w-full border rounded px-3 py-2 mb-2"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="w-full border rounded px-3 py-2 mb-2"
+        />
+
+        <input
+          type="text"
+          name="whatsapp"
+          placeholder="WhatsApp"
+          required
+          class="w-full border rounded px-3 py-2 mb-4"
+        />
+
+        <button
+          type="submit"
+          class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-700 transition w-full"
+        >
+          S’abonner
+        </button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <p class="text-center text-gray-600">
+    Aucune carte d’abonnement disponible pour le moment.
+  </p>
+  {% endif %}
+
+</section>
+
+{% endblock %}

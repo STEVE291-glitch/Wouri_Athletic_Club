@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Wouri Athletic Club{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- 🔹 HERO RESPONSIVE GLOBAL -->
+    <style>
+      .hero-section {
+        height: 45vh; /* mobile par défaut */
+      }
+
+      @media (min-width: 640px) {
+        .hero-section {
+          height: 55vh; /* tablette */
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-section {
+          height: 65vh; /* desktop */
+        }
+      }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+    <!-- 🔷 BARRE PARTENAIRE -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="max-w-7xl mx-auto flex justify-center items-center gap-4">
+        <span class="text-sm font-semibold">Sponsor officiel</span>
+        <img
+          src="{% static 'football_app/images/logo-partenaire.png' %}"
+          alt="Logo partenaire"
+          class="h-8 w-auto"
+        />
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full bg-white shadow z-50 top-10">
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+        <div class="flex items-center gap-3">
+          <img
+            src="{% static 'football_app/images/logo-club.png' %}"
+            alt="Logo Wouri Athletic Club"
+            class="h-10 w-auto"
+          />
+          <span class="text-2xl font-bold text-blue-900">
+            Wouri Athletic Club
+          </span>
+        </div>
+
+        <nav class="space-x-6 font-semibold text-blue-900">
+          <a href="{% url 'accueil' %}">Accueil</a>
+          <a href="{% url 'club' %}">Le Club</a>
+          <a href="{% url 'effectif' %}">Effectif</a>
+          <a href="{% url 'matchs' %}">Matchs</a>
+          <a href="{% url 'actualites' %}">Actualités</a>
+          <a href="{% url 'galerie' %}">Galerie</a>
+          <a href="{% url 'carte_abonnement' %}">Abonnements</a>
+          <a href="{% url 'partenaires' %}">Partenaires</a>
+          <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main class="pt-32">{% block content %}{% endblock %}</main>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-900 text-white py-8 mt-16 text-center">
+      © 2025 Wouri Athletic Club – Tous droits réservés
+    </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 1000 });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

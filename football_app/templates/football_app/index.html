@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wouri Athletic Club</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .hero-slide {
+        height: 90vh;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .overlay {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      /* 🔥 ANIMATION DES LOGOS (ÉTAPE 3) */
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .logo-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .logo-float-slow {
+        animation: float 5s ease-in-out infinite;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .animate-scroll {
+        animation: scroll 18s linear infinite;
+      }
+      .animate-scroll img {
+        transition: all 0.4s ease;
+        filter: grayscale(40%);
+      }
+
+      .animate-scroll img:hover {
+        filter: grayscale(0%);
+        transform: scale(1.08);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+    <!-- 🔷 BARRE PARTENAIRE -->
+    <div class="bg-blue-900 text-white py-2">
+      <div class="max-w-7xl mx-auto flex justify-center items-center gap-4">
+        <span class="text-sm font-semibold">Sponsor officiel</span>
+        <img
+          src="{% static 'football_app/images/logo-partenaire.png' %}"
+          alt="Logo partenaire"
+          class="h-8 w-auto"
+        />
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full bg-white shadow z-50 top-10">
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+        <!-- LOGO CLUB -->
+        <div class="flex items-center gap-3">
+          <img
+            src="{% static 'football_app/images/logo-club.png' %}"
+            alt="Logo Wouri Athletic Club"
+            class="h-10 w-auto"
+          />
+          <span class="text-2xl font-bold text-blue-900">
+            Wouri Athletic Club
+          </span>
+        </div>
+
+        <nav class="space-x-6 font-semibold text-blue-900">
+          <a href="{% url 'accueil' %}">Accueil</a>
+          <a href="{% url 'club' %}">Le Club</a>
+          <a href="{% url 'effectif' %}">Effectif</a>
+          <a href="{% url 'matchs' %}">Matchs</a>
+          <a href="{% url 'actualites' %}">Actualités</a>
+          <a href="{% url 'galerie' %}">Galerie</a>
+          <a href="{% url 'carte_abonnement' %}">Abonnements</a>
+          <a href="{% url 'partenaires' %}">Partenaires</a>
+          <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 🔥 HERO -->
+<section class="mt-32">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide hero-slide"
+        style="background-image: url('{% static 'football_app/images/hero1.jpg' %}')"
+      >
+        <div class="overlay flex items-center justify-center h-full">
+          <div class="text-center text-white" data-aos="fade-up">
+            <h1
+  class="text-6xl font-bold mb-4"
+  data-aos="fade-up"
+  data-aos-delay="100"
+>
+  Wouri Athletic Club
+</h1>
+
+<p
+  class="text-2xl mb-6"
+  data-aos="fade-up"
+  data-aos-delay="300"
+>
+  Passion. Excellence. Football.
+</p>
+
+
+            <!-- BOUTON -->
+            <a
+            href="{% url 'matchs' %}"
+            class="inline-block bg-blue-700 px-8 py-4 rounded-full text-white font-bold
+                   transition-all duration-300
+                   hover:bg-blue-800 hover:scale-105 hover:shadow-xl
+                   animate-bounce"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
+            Voir nos matchs
+          </a>
+          
+            <!-- 🔷 LOGOS CLUB + PARTENAIRE (HERO PRO) -->
+            <div class="mt-12 flex justify-center">
+              <div
+  class="flex items-center gap-10 bg-white/10 backdrop-blur-xl
+         px-12 py-6 rounded-3xl shadow-2xl"
+  data-aos="zoom-in"
+  data-aos-delay="700"
+
+
+              >
+                <img
+                  src="{% static 'football_app/images/logo-club.png' %}"
+                  alt="Logo Wouri Athletic Club"
+                  class="h-20 w-auto"
+                />
+
+                <span class="text-4xl font-bold text-white">×</span>
+
+                <img
+                  src="{% static 'football_app/images/logo-partenaire.png' %}"
+                  alt="Logo Partenaire Officiel"
+                  class="h-24 w-auto"
+                />
+              </div>
+            </div>
+            <!-- FIN HERO PRO -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+<!-- ⚽ PROCHAIN MATCH -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+
+    <!-- Titre -->
+    <h2 class="text-4xl font-bold text-blue-900 mb-4" data-aos="fade-up">
+      Prochain Match
+    </h2>
+    <p class="text-gray-600 mb-12" data-aos="fade-up" data-aos-delay="100">
+      Venez soutenir le Wouri Athletic Club
+    </p>
+
+    <!-- Carte Match -->
+    <div
+      class="max-w-3xl mx-auto bg-blue-900 text-white rounded-2xl shadow-xl p-10"
+      data-aos="zoom-in"
+    >
+      <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+
+        <!-- Wouri AC -->
+        <div class="flex flex-col items-center">
+          <img
+            src="{% static 'football_app/images/logo-club.png' %}"
+            alt="Wouri Athletic Club"
+            class="h-20 w-auto mb-3"
+          />
+          <span class="font-semibold text-lg">Wouri Athletic Club</span>
+        </div>
+
+        <!-- Infos match -->
+        <div class="text-center">
+          <span class="text-4xl font-bold block mb-2">VS</span>
+          <p class="text-sm opacity-90">Dimanche 28 Avril 2025</p>
+          <p class="text-sm opacity-90">16h00</p>
+          <p class="text-sm opacity-90">Stade de Bonamoussadi</p>
+          <p class="mt-2 text-sm italic opacity-80">
+            Adversaire à confirmer
+          </p>
+        </div>
+
+        <!-- Bloc Adversaire (texte seulement) -->
+        <div class="flex flex-col items-center">
+          <div
+            class="h-20 w-20 flex items-center justify-center rounded-full bg-white/20 text-2xl font-bold"
+          >
+            ?
+          </div>
+          <span class="mt-3 font-semibold text-lg">Adversaire FC</span>
+        </div>
+
+      </div>
+
+      <!-- Bouton -->
+      <div class="mt-8">
+        <a
+          href="{% url 'matchs' %}"
+          class="inline-block bg-white text-blue-900 font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition"
+        >
+          Voir le calendrier
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-900 text-white py-10 text-center">
+      © 2025 Wouri Athletic Club – Tous droits réservés
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+      AOS.init({ once: true, duration: 1000 });
+
+      new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 5000 },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

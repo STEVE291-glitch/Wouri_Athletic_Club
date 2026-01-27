@@ -1,0 +1,65 @@
+{% extends 'football_app/base.html' %} {% load static %} {% block title %}
+Effectif | Wouri Athletic Club {% endblock %} {% block content %}
+
+<!-- HERO EFFECTIF -->
+<section
+  class="relative hero-section bg-cover bg-center"
+  style="
+    background-image: url('{% static 'football_app/images/effectif-hero.jpg' %}');
+    background-size: cover;
+    background-position: center;
+  "
+>
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10 text-white px-4">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">L’Âme du Club</h1>
+    <h2 class="text-xl md:text-2xl font-light max-w-3xl mx-auto">
+      Des hommes, une vision, un seul objectif : défendre les couleurs du Wouri
+      Athletic Club
+    </h2>
+  </div>
+</section>
+
+<!-- SECTION EFFECTIF -->
+<section class="max-w-7xl mx-auto py-20 px-4">
+  <h2 class="text-4xl font-bold text-blue-900 mb-14 text-center">
+    Notre Effectif
+  </h2>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+    {% for joueur in joueurs %}
+    <div
+      class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition"
+    >
+      {% if joueur.photo %}
+      <img
+        src="{{ joueur.photo.url }}"
+        alt="{{ joueur.nom }}"
+        class="w-40 h-40 mx-auto rounded-full object-cover mb-6 border-4 border-blue-900"
+      />
+      {% else %}
+      <img
+        src="{% static 'football_app/images/player-default.png' %}"
+        alt="Joueur"
+        class="w-40 h-40 mx-auto rounded-full object-cover mb-6 border-4 border-blue-900"
+      />
+      {% endif %}
+
+      <h3 class="text-xl font-bold text-gray-900">{{ joueur.nom }}</h3>
+
+      <p class="text-gray-600 mt-1">{{ joueur.poste }}</p>
+
+      <p class="text-blue-800 font-semibold mt-3 text-lg">
+        #{{ joueur.numero }}
+      </p>
+    </div>
+    {% empty %}
+    <p class="text-center col-span-full text-gray-500 text-lg">
+      Aucun joueur enregistré pour le moment.
+    </p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

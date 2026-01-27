@@ -1,0 +1,51 @@
+{% extends 'football_app/base.html' %}
+{% load static %}
+
+{% block title %}
+Galerie | Wouri Athletic Club
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO GALERIE -->
+<section
+  class="relative hero-section bg-cover bg-center"
+  style="background-image: url('{% static "football_app/images/galerie-hero.jpg" %}')"
+>
+  <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+    <div class="text-center text-white" data-aos="fade-up">
+      <h1 class="text-5xl font-bold mb-4">Galerie du Club</h1>
+      <p class="text-xl">Moments forts · Passion · Histoire</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENU GALERIE -->
+<section class="max-w-7xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold text-blue-900 mb-12 text-center">
+    Nos images
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {% for media in medias %}
+      <div
+        class="bg-white rounded-lg shadow overflow-hidden transform hover:scale-105 transition duration-300"
+        data-aos="zoom-in"
+      >
+        {% if media.image %}
+          <img
+            src="{{ media.image.url }}"
+            alt="Galerie"
+            class="w-full h-56 object-cover"
+          />
+        {% endif %}
+      </div>
+    {% empty %}
+      <p class="text-center text-gray-500 col-span-full">
+        Aucun média disponible pour le moment.
+      </p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
