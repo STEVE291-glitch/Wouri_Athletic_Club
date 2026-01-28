@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -154,6 +156,7 @@ EMAIL_HOST_PASSWORD = 'hfqrgkyncjqvndke'.replace(" ", "")
 
 DEFAULT_FROM_EMAIL = 'FC Wouri Athletic Club <emilefarid21@gmail.com>'
 ADMIN_EMAIL = 'emilefarid21@gmail.com'
+
 
 
 
