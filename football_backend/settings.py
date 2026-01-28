@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-#&l5lc501=6$4esporpgd=3c6oq3%22x&vnix$#q4gbgoylq7!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wouri-athletic-club-5.onrender.com', 'wouri-athletic-club-6.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if render_external_hostname:
+    ALLOWED_HOSTS.append(render_external_hostname)
 
 # Application definition
 
@@ -151,6 +154,7 @@ EMAIL_HOST_PASSWORD = 'hfqrgkyncjqvndke'.replace(" ", "")
 
 DEFAULT_FROM_EMAIL = 'FC Wouri Athletic Club <emilefarid21@gmail.com>'
 ADMIN_EMAIL = 'emilefarid21@gmail.com'
+
 
 
 
